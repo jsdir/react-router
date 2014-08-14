@@ -8,6 +8,7 @@ var withoutProperties = require('../helpers/withoutProperties');
  */
 var RESERVED_PROPS = {
   handler: true,
+  onTrigger: true,
   path: true,
   children: true // ReactChildren
 };
@@ -75,7 +76,8 @@ var Route = React.createClass({
 
   propTypes: {
     preserveScrollPosition: React.PropTypes.bool.isRequired,
-    handler: React.PropTypes.any.isRequired,
+    handler: React.PropTypes.any,
+    onTrigger: React.PropTypes.func,
     path: React.PropTypes.string,
     name: React.PropTypes.string
   },

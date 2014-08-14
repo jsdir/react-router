@@ -329,6 +329,14 @@ function syncWithTransition(routes, transition) {
   if (!nextMatches)
     nextMatches = [];
 
+  if (nextMatches.length > 0) {
+    var onTrigger = nextMatches[0].route.props.onTrigger;
+    if (onTrigger) {
+      onTrigger();
+      return Promise.resolve(); // Don't switch the route.
+    }
+  }
+
   var fromMatches, toMatches;
   if (currentMatches) {
     updateMatchComponents(currentMatches, routes.refs);

@@ -48,13 +48,6 @@ var RouteStore = {
       route.props.path = '/';
     }
 
-    // Make sure the <Route> has a valid React component for a handler.
-    invariant(
-      React.isValidClass(route.props.handler),
-      'The handler for Route "' + (route.props.name || route.props.path) + '" ' +
-      'must be a valid React component'
-    );
-
     // Make sure the <Route> has all params that its parent needs.
     if (_parentRoute) {
       var paramNames = Path.extractParamNames(route.props.path);
